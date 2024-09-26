@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Empleados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+    <h1>Dashboard de Empleados</h1>
+
+    <div class="container">
+        <div class="grid">
+            <div class="panel">
+                <h2>Gráfico de Barras: Edad vs Salario</h2>
+                <div class="chart">
+                    <img src="data:image/png;base64,{{ bar_chart }}">
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Gráfico Circular: Personas por Ciudad</h2>
+                <div class="chart">
+                    {{ pie_chart|safe }}
+                </div>
+            </div>
+
+            <div class="panel full-width">
+                <h2>Tabla de Empleados</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Ciudad</th>
+                            <th>Salario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp in empleados %}
+                        <tr>
+                            <td>{{ emp.id }}</td>
+                            <td>{{ emp.nombre }}</td>
+                            <td>{{ emp.edad }}</td>
+                            <td>{{ emp.ciudad }}</td>
+                            <td>{{ emp.salario }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <a href="#" class="btn">Descargar Reporte</a>
+    </div>
+
+</body>
+</html>

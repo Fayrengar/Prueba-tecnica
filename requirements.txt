@@ -1,0 +1,7 @@
+Flask
+flask_sqlalchemy
+mysql-connector-python
+SQLAlchemy
+matplotlib
+plotly
+pandas
